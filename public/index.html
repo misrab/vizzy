@@ -2,24 +2,29 @@
 <html>
   <head>
     <title>Vizzy</title>
-    <!-- <link rel="stylesheet" href="css/base.css" /> -->
+    <!-- <link rel="shortcut icon" href="assets//images/favico.ico"> -->
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.12.2/react.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.12.2/JSXTransformer.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <!--
-    <script src="//cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
-    -->
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="js/external/react.js"></script>
+    <script src="js/external/JSXTransformer.js"></script>
+    <script src="js/external/jquery.min.js"></script>
+    <script src="js/external/d3.min.js"></script>
+    <script src="js/external/bootstrap.min.js"></script>
+ 
+
+    <link rel='stylesheet' href='styles/application.css' />
+
   </head>
   <body>
-    <div id="content">
-      Welcome to vizzy
+    <div class="container">
+      <h1>Vizzy</h1>
+      <h2>Illustrate data</h2>
+
+      <div id="charts"></div>
     </div>
 
 
-    <script type="text/jsx;harmony=true" src="scripts/example.js"></script>
+    <script type="text/jsx;harmony=true" src="js/barchart.js"></script>
   </body>
 </html>
