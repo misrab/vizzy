@@ -14,11 +14,63 @@
     <link rel="stylesheet" href="styles/external/bootstrap.min.css" />
     <link rel='stylesheet' href='styles/application.css' />
 
+
+    <!-- datetime picker -->
+    <!-- see http://xdsoft.net/jqplugins/datetimepicker/ -->
+    <link rel="stylesheet" type="text/css" href="styles/external/jquery.datetimepicker.css"/ >
+    <script src="js/external/jquery.datetimepicker.js"></script>
+    <!-- just for date parsing to unix -->
+    <script src="js/external/date.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        $('.datetimepicker').datetimepicker();
+
+        $("#getData").click(function(e) {
+          e.preventDefault();
+
+          var url = $('input[name="url"]').val();
+          // times in unix value
+          var from = $('input[name="from"]').val();
+          var to = $('input[name="to"]').val();
+
+          // convert to unix NANO
+          var fromunix = "";
+          var tounix = "";
+          if (from != "" && to != "") {
+            fromunix = Date.parse(from).getTime()*1000000;
+            tounix = Date.parse(to).getTime()*1000000;
+          }
+          
+
+          url = url + "?" + "from=" + fromunix + "&to=" + tounix;
+
+          console.log(url);
+
+          $.get(url, function(data) {
+            console.log(data);
+          });
+        });
+
+      });
+    </script>
+
   </head>
   <body>
     <div class="container">
       <h1>Vizzy</h1>
       <h2>Illustrate data</h2>
+
+      <!-- inputs -->
+      <div style="width: 40%;">
+        <h3>Data Source</h3>
+        <input class="form-control small_space_top" type="text" placeholder="url" name="url" />
+
+        <input name="from" class="datetimepicker form-control small_space_top" type="text" placeholder="From" />
+        <input name="to" class="datetimepicker form-control small_space_top" type="text" placeholder="To" />
+
+        <button id="getData" class="btn btn-primary small_space_top">Get data</button>
+
+      </div>
 
       <div id="charts"></div>
     </div>
